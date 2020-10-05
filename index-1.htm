@@ -1,0 +1,260 @@
+<!--	TODO
+		_ CMS sencillo
+		_ Mejorar responsividad
+		_ Bug render de svgs
+		_ Menu hamburguesa responsive
+		_ Flechas feas en momentos
+		_ Bordes a los maps
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Mendoza RC</title>
+	<link rel="icon" href="./img/icon.png" />
+	<meta charset="UTF-8">
+	<!-- Responsivity <meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" href="./glide/glide.core.min.css">
+	<link rel="stylesheet" href="./glide/glide.theme.min.css">
+</head>
+
+<body>
+	<div id="app">
+		<div class="main_carousel" id="home">
+			<div class="main_glide" style="z-index: -100">
+				<div class="glide__track" data-glide-el="track">
+					<ul class="glide__slides" style="margin-top: 0">
+						<li class="glide__slide center_flex"><img src="./img/fotos/home-1.jpg" class=""
+								style="width: 100%"></li>
+						<li class="glide__slide center_flex"><img src="./img/fotos/home-2.jpg" class=""
+								style="width: 100%"></li>
+						<li class="glide__slide center_flex"><img src="./img/fotos/home-3.jpg" class=""
+								style="width: 100%"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="top_bar bar" style="position: absolute; top: 1.5em; left: 0; width: 100%">
+			<a href="./index.html"><img class="bar_logo" src="./img/logo.svg"></a>
+			<div style="margin-right: 130px; margin-bottom: 2px">
+				<a class="bar_button bar_button_active" href="./index.html">Home</a>
+				<a class="bar_button" href="./deportes.html">Deportes</a>
+				<a class="bar_button" href="./ser_parte.html">Ser parte</a>
+				<a class="bar_button" href="./barrio.html">Barrio</a>
+			</div>
+		</div>
+
+		<div class="bar" style="width: 100%;position: relative; transform: translateY(-250px); margin-bottom: -250px;">
+			<div style="width: 91.83px; height: 25.95px; margin-left: 130px"></div>
+			<a href="#ser_parte"><button class="main_button">Ser Parte</button></a>
+			<div style="margin-right: 130px">
+				<a href="https://www.facebook.com/MendozaRugbyClub/"><img class="simple_logo_shadow"
+						src="./img/logo_fb.svg"></a>
+				<a href="https://www.instagram.com/mza_rc/?hl=es-la"><img class="simple_logo_shadow"
+						src="./img/logo_ig.svg"></a>
+			</div>
+		</div>
+
+		<!-- NOTICIAS -->
+		<img src="./img/banner-1.svg" style="width: 100%;">
+		<div class="section1 section" id="noticias">
+			<h1 style="max-width: 830px; margin:auto; margin-bottom: 32px; margin-top: 32px">NOTICIAS</h1>
+			<div id="not_container">
+				<!-- INICIO DE NOTICIAS -->
+				<div class="not_module_inv" v-if="noticias" v-for="noticia in noticias">
+					<div class="not_img">
+						<img :src="noticia['img']">
+					</div>
+					<div class="not_content">
+						<div>
+							<h2>{{ noticia['titulo'] }}</h2>
+							<p>{{ noticia['text'] }}</p>
+							<a v-if="noticia['link']" :href="noticia['link']">{{ noticia['button_txt'] }}</a>
+						</div>
+					</div>
+				</div>
+
+				<!--- FIN NOTICIAS --->
+			</div>
+			<br>
+			<div style="margin:auto; text-align: center"><span id="page_sel"></span></div>
+		</div>
+
+		<!-- MOMENTOS -->
+		<img src="./img/banner-2.svg" style="width: 100%; background-color: #23364E">
+		<div class="section2 section">
+			<div class="mom_glide" style="width: 100%; margin: auto; position: relative;">
+				<h1>MOMENTOS</h1>
+				<br>
+				<div class="glide__track" data-glide-el="track" style="overflow: visible;">
+					<ul class="glide__slides" style="overflow: visible;">
+						<!-- INICIO DE MOMENTOS -->
+						<li class="glide__slide center_flex" v-if="momentos" v-for="momento in momentos">
+							<div class="mom_module">
+								<div style="margin-bottom: -4px;"><iframe style="border: 0;" width="480" height="280"
+										:src="momento['link']" allowfullscreen></iframe></div>
+								<div class="mom_content">
+									<h1>{{ momento['titulo'] }}</h1>
+									<p>{{ momento['text'] }}</p>
+								</div>
+							</div>
+						</li>-->
+						<!-- FIN DE MOMENTOS -->
+					</ul>
+				</div>
+				<div class="glide__arrows" data-glide-el="controls">
+					<button class="glide__arrow glide__arrow--left" data-glide-dir="<" style="left: -3%; top: 59%">
+						<img src="https://img.icons8.com/windows/32/000000/left.png">
+					</button>
+					<button class="glide__arrow glide__arrow--right" data-glide-dir=">" style="right: -3%; top: 59%">
+						<img src="https://img.icons8.com/windows/32/000000/right.png">
+					</button>
+				</div>
+				<br>
+			</div>
+		</div>
+
+		<!-- SER PARTE -->
+		<img src="./img/banner-3.svg" style="width: 100%; background-color: #FF6633">
+		<div class="section3 section" id="ser_parte">
+			<h1>SER PARTE</h1>
+			<div
+				style="font-family: Lato Light; font-size: 14pt; display: flex; flex-direction: row; justify-content: center; ">
+				<form action="http://mendozarugbyclub.com.ar/mail/send_mail.php"
+					style="width: 400px; text-align: right;margin-top: 25px">
+					<!-- ./mail/send_mail.php -->
+					Completar formulario
+					<br>
+					<input required type="email" name="email" placeholder="Email"
+						style="color: #FF6633; background: #f0f0f0; font-family: Lato Light; font-size: 12pt; color: black; width: 300px; padding: 10px; border: none; margin-top: 18px">
+					<br>
+					<select required name="opcion"
+						style="color: #FF6633; background: #f0f0f0; font-family: Lato Light; font-size: 12pt; color: black; width: 320px; padding: 10px; margin-top: 18px;margin-bottom: 18px; border: 0;">
+						<option value="" disabled selected>Seleccione una opción</option>
+						<option value="rugby">Rugby</option>
+						<option value="hockey">Hockey</option>
+						<option value="grupo familiar">Grupo familiar</option>
+						<option value="socio adherente">Socio adherente</option>
+					</select>
+					<br>
+					<input type="submit" value="ENVIAR" class="fancy_button" style="color: #23364E"></input>
+				</form>
+				<div style="width: 30px">
+
+				</div>
+				<div style="width: 400px">
+					<h2 style="color: #FF6633; font-family: Lato Black; margin-top: 15px; margin-bottom: 5px">Paso a
+						paso</h2>
+					Llená el formulario con la información requerida y a la brevedad nos pondremos en contacto para
+					contarte cómo es nuestro club.
+				</div>
+			</div>
+		</div>
+
+		<!-- SPONSORS CAROUSEL -->
+		<div class="glide" style="width: 100%; margin: auto; background-color: #23364E">
+			<div class="glide__track" data-glide-el="track">
+				<ul class="glide__slides" style="margin-top: 0px; margin-bottom: 0px">
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-16.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-17.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-18.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-19.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-20.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-21.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-22.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-23.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-24.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-25.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-26.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-27.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-28.svg"
+							class="glide_image"></li>
+					<li class="glide__slide center_flex"><img src="./img/sponsors/sponsor 3.0-25-29.svg"
+							class="glide_image"></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- GOOGLE MAPS -->
+		<div style="width: 100%; display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap;">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.2881121779315!2d-68.77220058392702!3d-32.86409568094585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0f03e9d4ef91%3A0xd1e5342435b002d3!2sMendoza+Rugby+Club!5e0!3m2!1ses-419!2sar!4v1561476173413!5m2!1ses-419!2sar"
+				frameborder="0" class="gmap" allowfullscreen></iframe>
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.643326608432!2d-68.858346277566!3d-32.93402055752585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e0bc7fae7f0a3%3A0x7b5d199f329cd9a9!2sMendoza+Rugby+Club+Anexo+Godoy+Cruz!5e0!3m2!1ses-419!2sar!4v1561476065981!5m2!1ses-419!2sar"
+				frameborder="0" class="gmap" allowfullscreen></iframe>
+		</div>
+
+		<div class="footer section">
+			<h1>CONTACTO</h1>
+			<div
+				style="color: white; font-family: Lato Light; font-size: 14pt; display: flex; flex-direction: row; justify-content: center">
+				<div style="width: 400px; text-align: right">
+					Si te interesa unirte al club podes completar los formularios para ser socio o contactarte
+					directamente con nosotros.
+				</div>
+				<div style="width: 30px">
+
+				</div>
+				<div style="width: 400px">
+					Mathus Hoyos 4247, Bermejo, Mendoza<br>secretariamendozarugby@yahoo.com.ar<br>0261 451-2600
+				</div>
+			</div>
+			<div
+				style="margin: auto; width: 80%; display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 86px">
+				<a href="#home"><img src="./img/new_logo.svg" style="width: 140px"></a>
+				<div>
+					<a href="https://www.facebook.com/MendozaRugbyClub/"><img class="simple_logo"
+							src="./img/logo_fb.svg"></a>
+					<a href="https://www.instagram.com/mza_rc/?hl=es-la"><img class="simple_logo"
+							src="./img/logo_ig.svg"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="./vue.js"></script>
+	<script src="./index.js"></script>
+
+	<script src="./glide/glide.min.js"></script>
+	<script>
+		new Glide('.glide', {
+			type: 'carousel',
+			startAt: 0,
+			perView: 6,
+			autoplay: 1,
+			animationDuration: 6000,
+			animationTimingFunc: 'linear',
+		}).mount();
+
+		new Glide('.main_glide', {
+			type: 'carousel',
+			startAt: 0,
+			perView: 1,
+			autoplay: 3500,
+			animationDuration: 1200,
+			gap: 0,
+			animationTimingFunc: 'ease-in-out',
+		}).mount();
+	</script>
+</body>
+
+</html>
